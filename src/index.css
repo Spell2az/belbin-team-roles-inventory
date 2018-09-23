@@ -1,5 +1,69 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #D8D8D8;
+}
+
+.hero-bg {
+
+  background: linear-gradient(rgba(61, 30, 105, 0.7), rgba(13, 13, 84, 0.81)), url("https://images.unsplash.com/photo-1526290126862-138811a6b582?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=69f5b1d7902aa23170f8b92a496c2d6f&auto=format&fit=crop&w=1350&q=80");
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+
+}
+
+.container {
+  margin: 0 auto;
+
+  padding: 30px;
+}
+
+.hero-content {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fafafa;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+
+}
+
+.hero-content h1 {
+  letter-spacing: 3px;
+  font-weight: 400;
+  font-size: 60px;
+  margin-bottom: 100px;
+}
+
+.content-wrapper {
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+
+.heroSection {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  color: white;
+}
+
+.heroHalf {
+  width: 50%;
+  min-height: 100vh;
+}
+
+.heroImgBackground {
+
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
