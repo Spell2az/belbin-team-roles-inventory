@@ -35,7 +35,7 @@ const styles = theme => ({
   },
   stepperWrapper: {
     margin: '0 auto',
-    width: '70%',
+    width: '80%',
   },
   heading: {
     textAlign: 'center',

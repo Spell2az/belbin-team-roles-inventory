@@ -10,10 +10,11 @@ const styles = theme => ({
     display: 'flex',
     width: '100px',
     alignItems: 'center',
+    marginRight: '10px',
   },
   button: {
-    height: '24px',
-    width: '24px',
+    
+    padding: '3px',
     margin: '0 5px',
   },
   pointValue: {
