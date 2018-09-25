@@ -1,5 +1,7 @@
 import React from 'react';
-import LandingHero from '../LadingHero';
+import LandingHero from './LadingHero';
+import Teamrole from './Teamrole';
+import {teamroles} from './teamroles';
 
 const Home = () => (
   <div className="hero-bg">
@@ -29,6 +31,8 @@ In practice, we all have two or three team roles that fit us naturally and some 
        <hr/>
        <section className="text-wrapper">
          <h3 >The Nine Team Roles and Their Talents</h3>
+         <br/>
+         {teamroles.map(role =><Teamrole {...role}></Teamrole>)}
        </section>
       </main>
     </div>
