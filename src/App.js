@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Route } from 'react-router-dom';
 
-import Home from './components/pages/Home';
+import Home from './components/pages/home/Home';
 import Quiz from './components/pages/quiz/Quiz';
 import Results from './components/pages/results/Results';
 
