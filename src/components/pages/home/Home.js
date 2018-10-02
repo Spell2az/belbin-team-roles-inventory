@@ -2,8 +2,18 @@ import React from 'react';
 import LandingHero from './LadingHero';
 import Teamrole from './Teamrole';
 import {teamroles} from './teamroles';
+import classnames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
-const Home = () => (
+const styles = props => ({
+  teamroles: {
+    '& div:last-child': {
+      borderBottom: 'none',
+    }
+  }
+})
+
+const Home = ({classes}) => (
   <div className="hero-bg">
     <div className="container">
       <LandingHero />
@@ -32,11 +42,12 @@ In practice, we all have two or three team roles that fit us naturally and some 
        <section className="text-wrapper">
          <h3 >The Nine Team Roles and Their Talents</h3>
          <br/>
-         {teamroles.map(role =><Teamrole {...role}></Teamrole>)}
+         <div className={classes.teamroles}> {teamroles.map(role =><Teamrole key={role.name} {...role}></Teamrole>)}</div>
+         
        </section>
       </main>
     </div>
   </div>
 );
 
-export default Home;
+export default withStyles(styles)(Home);
