@@ -56,12 +56,12 @@ export const teamroles = [
     likes: 'Togetherness, connectedness, improving personal relationships.',
     contributions: 'Relationship oriented, sensitive and caring. Creates togetherness and team spirit.',
     pitfalls: 'Indecisive in crunch situations. Avoids conflict and confrontation.',
-  },{
+  },/*{
     name: 'Specialist',
     description: ' is an immeasurable source of knowledge in his/her field. An advisor who is gladly consulted and will provide knowledge on a specific topic with pleasure and ease. His/her contributions to the team are his/her substantial knowledge and technical skills. Specialist thrives less well when working together and does not care for social activities that much.',
     character: 'Dedicated professional, silent and unfaltering soloist, highly task-oriented, advisor on the sideline.',
     likes: 'Working independently, peace and regularity, opportunity to present extensive knowledge.',
     contributions: 'Expertise and specialized knowledge.',
     pitfalls: 'Becoming isolated. Not getting his/her advice accepted because of lack of social interaction.',
-  },
+  },*/
 ]
