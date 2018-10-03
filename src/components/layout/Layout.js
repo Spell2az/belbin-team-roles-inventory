@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { HashLink as Link } from 'react-router-hash-link';
 import Scrollchor from 'react-scrollchor';
 import { roleNames } from '../pages/home/teamroles';
 import { createId } from '../../utils/createId';
@@ -21,6 +20,9 @@ const styles = {
   fullList: {
     width: 'auto',
   },
+  drawerHeading: {
+    margin: 0,
+  }
 };
 
 class Layout extends Component {
@@ -40,8 +42,15 @@ class Layout extends Component {
 
     const roleList = (
       <div className={classes.list}>
+      <List component="nav">
+        <ListItem button><ListItemText>Home</ListItemText></ListItem>
+        <ListItem button><ListItemText>Get you role</ListItemText></ListItem>
+        <ListItem button><ListItemText>Instructions</ListItemText></ListItem>
+        <ListItem button><ListItemText>Home</ListItemText></ListItem>
+      </List>
       <hr/>
         <List component="nav">
+          <ListItem ><ListItemText><h3 className={classes.drawerHeading}>ROLES</h3></ListItemText></ListItem>
           {roleNames.map(name => ( <ListItem key={name} button component={Scrollchor} animate={{offset: -20, duration: 600}} to={`#${createId(name)}`} >
             <ListItemText>{name}</ListItemText>
           </ListItem>))}
