@@ -1,5 +1,4 @@
 import React from 'react'
-import Card from '@material-ui/core/Card';
 import { withStyles} from '@material-ui/core/styles';
 
 
@@ -18,9 +17,9 @@ const styles = props => ({
 })
 const Teamrole = props => {
   const {
-    name, description, character, likes, contributions, pitfalls, classes
+    name, description, character, likes, contributions, pitfalls, classes, id
   } = props
-  return (<div className={classes.card}>
+  return (<div  id={id} className={classes.card}>
     <h4>{name}</h4>
    
       <h5>Description</h5>
