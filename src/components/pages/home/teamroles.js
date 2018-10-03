@@ -65,3 +65,5 @@ export const teamroles = [
     pitfalls: 'Becoming isolated. Not getting his/her advice accepted because of lack of social interaction.',
   },*/
 ]
+
+export const roleNames = teamroles.map(({name})=> name);
