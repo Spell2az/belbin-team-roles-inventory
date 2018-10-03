@@ -22,7 +22,7 @@ export const teamroles = [
     contributions: 'Creativity, innovative ideas. Solves difficult problems.',
     pitfalls: 'Being too unrealistic, thinking without acting or practical results.',
   },{
-    name: 'Monitor',
+    name: 'Monitor Evaluator',
     description: ' is sensible, thoughtful and critical. The analyst of the team. He/she is always analyzing situations and wants to get to the bottom of things. As Monitor he/she may deliberate long and thoroughly and his or her judgment is rarely wrong.',
     character: 'Thoughtful evaluator, an analyzer, asks questions, explores logical reasoning.',
     likes: 'Insight and overview, analyzing, to understand and comprehend.',
@@ -43,7 +43,7 @@ export const teamroles = [
     contributions: 'Clarifies goals, structures discussions, creates unity, takes (tough) decisions.',
     pitfalls: 'Slightly manipulative to reach goals. Delegates work too easily.',
   },{
-    name: 'Completer Finisher',
+    name: 'Completer-Finisher',
     description: ' has the talent to always feel what could go wrong. This leads to a lot of attention to details, checking and rechecking, and a tendency to perfectionism. He/she monitors the quality and safety, but can sometimes be overprotective and find it difficult to delegate things to others.',
     character: 'Conscientious, a perfectionist, focused on detail, inner tension, (overly) concerned, accurate.',
     likes: 'Safety and security, quality, details.',
