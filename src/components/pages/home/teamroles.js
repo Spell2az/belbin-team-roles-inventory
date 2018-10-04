@@ -22,7 +22,7 @@ export const teamroles = [
     contributions: 'Creativity, innovative ideas. Solves difficult problems.',
     pitfalls: 'Being too unrealistic, thinking without acting or practical results.',
   },{
-    name: 'Monitor',
+    name: 'Monitor Evaluator',
     description: ' is sensible, thoughtful and critical. The analyst of the team. He/she is always analyzing situations and wants to get to the bottom of things. As Monitor he/she may deliberate long and thoroughly and his or her judgment is rarely wrong.',
     character: 'Thoughtful evaluator, an analyzer, asks questions, explores logical reasoning.',
     likes: 'Insight and overview, analyzing, to understand and comprehend.',
@@ -43,7 +43,7 @@ export const teamroles = [
     contributions: 'Clarifies goals, structures discussions, creates unity, takes (tough) decisions.',
     pitfalls: 'Slightly manipulative to reach goals. Delegates work too easily.',
   },{
-    name: 'Completer Finisher',
+    name: 'Completer-Finisher',
     description: ' has the talent to always feel what could go wrong. This leads to a lot of attention to details, checking and rechecking, and a tendency to perfectionism. He/she monitors the quality and safety, but can sometimes be overprotective and find it difficult to delegate things to others.',
     character: 'Conscientious, a perfectionist, focused on detail, inner tension, (overly) concerned, accurate.',
     likes: 'Safety and security, quality, details.',
@@ -56,12 +56,14 @@ export const teamroles = [
     likes: 'Togetherness, connectedness, improving personal relationships.',
     contributions: 'Relationship oriented, sensitive and caring. Creates togetherness and team spirit.',
     pitfalls: 'Indecisive in crunch situations. Avoids conflict and confrontation.',
-  },{
+  },/*{
     name: 'Specialist',
     description: ' is an immeasurable source of knowledge in his/her field. An advisor who is gladly consulted and will provide knowledge on a specific topic with pleasure and ease. His/her contributions to the team are his/her substantial knowledge and technical skills. Specialist thrives less well when working together and does not care for social activities that much.',
     character: 'Dedicated professional, silent and unfaltering soloist, highly task-oriented, advisor on the sideline.',
     likes: 'Working independently, peace and regularity, opportunity to present extensive knowledge.',
     contributions: 'Expertise and specialized knowledge.',
     pitfalls: 'Becoming isolated. Not getting his/her advice accepted because of lack of social interaction.',
-  },
+  },*/
 ]
+
+export const roleNames = teamroles.map(({name})=> name);
