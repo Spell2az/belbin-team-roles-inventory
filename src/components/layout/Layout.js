@@ -14,6 +14,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Scrollchor from 'react-scrollchor';
 import { roleNames } from '../pages/home/teamroles';
 import { createId } from '../../utils/createId';
+import { HashLink } from 'react-router-hash-link';
+
 const styles = {
   list: {
     width: 250,
@@ -58,7 +60,7 @@ class Layout extends Component {
       <hr/>
         <List component="nav">
           <ListItem ><ListItemText><h3 className={classes.drawerHeading}>ROLES</h3></ListItemText></ListItem>
-          {roleNames.map(name => ( <ListItem key={name} button component={Scrollchor} animate={{offset: -20, duration: 600}} to={`#${createId(name)}`} >
+          {roleNames.map(name => ( <ListItem key={name} button component={HashLink} scroll={el => el.scrollIntoView({ behavior: 'auto', block: 'center' })} to={`/#${createId(name)}`} >
             <ListItemText>{name}</ListItemText>
           </ListItem>))}
          
