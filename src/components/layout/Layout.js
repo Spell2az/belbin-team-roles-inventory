@@ -5,15 +5,17 @@ import Drawer from '@material-ui/core/Drawer';
 import { Route } from 'react-router-dom';
 import Home from '../pages/home/Home';
 import Quiz from '../pages/quiz/Quiz';
+import Instructions from '../pages/instructions/Instructions';
 import Results from '../pages/results/Results';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import AppBar from '@material-ui/core/AppBar';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Scrollchor from 'react-scrollchor';
 import { roleNames } from '../pages/home/teamroles';
 import { createId } from '../../utils/createId';
+import { HashLink } from 'react-router-hash-link';
+
 const styles = {
   list: {
     width: 250,
@@ -27,7 +29,6 @@ const styles = {
   },
   appBar: {
     background: 'white',
-    // borderBottom: '1px solid #eee',
     
   }
 };
@@ -50,15 +51,15 @@ class Layout extends Component {
     const roleList = (
       <div className={classes.list}>
       <List component="nav">
-        <ListItem button><ListItemText>Home</ListItemText></ListItem>
-        <ListItem button><ListItemText>Get your role</ListItemText></ListItem>
-        <ListItem button><ListItemText>Instructions</ListItemText></ListItem>
+        <ListItem button component={HashLink} to="/" ><ListItemText>Home</ListItemText></ListItem>
+        <ListItem button component={HashLink} to="/quiz" ><ListItemText>Get your role</ListItemText></ListItem>
+        <ListItem button component={HashLink} to="/instructions" ><ListItemText>Instructions</ListItemText></ListItem>
         
       </List>
       <hr/>
         <List component="nav">
           <ListItem ><ListItemText><h3 className={classes.drawerHeading}>ROLES</h3></ListItemText></ListItem>
-          {roleNames.map(name => ( <ListItem key={name} button component={Scrollchor} animate={{offset: -20, duration: 600}} to={`#${createId(name)}`} >
+          {roleNames.map(name => ( <ListItem key={name} button component={HashLink} scroll={el => el.scrollIntoView({ behavior: 'auto', block: 'center' })} to={`/#${createId(name)}`} >
             <ListItemText>{name}</ListItemText>
           </ListItem>))}
          
@@ -85,6 +86,7 @@ class Layout extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/quiz" component={Quiz} />
           <Route path="/results" component={Results} />
+          <Route path="/instructions" component={Instructions} />
       </div>
     )
   }

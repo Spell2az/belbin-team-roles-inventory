@@ -11,7 +11,7 @@ import StepContent from '@material-ui/core/StepContent';
 import cx from 'classnames';
 import PointControl from './PointControls';
 import { questions } from './questions';
-
+import { Done } from '@material-ui/icons';
 export const ResultContext = React.createContext({
   results: null,
 });
@@ -49,6 +49,11 @@ const styles = theme => ({
   instructionsWrapper: {
     padding: '20px',
   },
+  check: {
+    color: '#00e676',
+    display: 'inline-block',
+    marginBottom: '-3px',
+  }
 });
 
 function getSteps() {
@@ -247,7 +252,7 @@ class Quiz extends Component {
                   <StepLabel>{label}</StepLabel>
 
                   <StepContent>
-                    <div>Points left: {answers[index + 1].pointsLeft}</div>
+                    <div ><p style={{lineHeight: '34px'}}>Points left: {answers[index + 1].pointsLeft} <span>{answers[index + 1].pointsLeft === 0 && (<Done className={classes.check}></Done>)}</span></p></div>
                     {Object.keys(getStepContent(index)).map(key => (
                       <div className={classes.sentenceWrapper} key={key}>
                         <PointControl
