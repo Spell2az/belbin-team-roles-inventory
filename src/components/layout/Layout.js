@@ -8,6 +8,7 @@ import Quiz from '../pages/quiz/Quiz';
 import Results from '../pages/results/Results';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
+import AppBar from '@material-ui/core/AppBar';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Scrollchor from 'react-scrollchor';
@@ -22,6 +23,12 @@ const styles = {
   },
   drawerHeading: {
     margin: 0,
+    fontWeight: 400,
+  },
+  appBar: {
+    background: 'white',
+    // borderBottom: '1px solid #eee',
+    
   }
 };
 
@@ -44,9 +51,9 @@ class Layout extends Component {
       <div className={classes.list}>
       <List component="nav">
         <ListItem button><ListItemText>Home</ListItemText></ListItem>
-        <ListItem button><ListItemText>Get you role</ListItemText></ListItem>
+        <ListItem button><ListItemText>Get your role</ListItemText></ListItem>
         <ListItem button><ListItemText>Instructions</ListItemText></ListItem>
-        <ListItem button><ListItemText>Home</ListItemText></ListItem>
+        
       </List>
       <hr/>
         <List component="nav">
@@ -62,7 +69,9 @@ class Layout extends Component {
 
     return (
       <div>
-        <Toolbar> <Button onClick={this.toggleDrawer(true)} variant="outlined" size= "medium" > MENU </Button></Toolbar >
+        <AppBar className={classes.appBar} position="fixed">
+        <Toolbar><Button onClick={this.toggleDrawer(true)} variant="outlined" size= "medium" > MENU </Button></Toolbar ></AppBar>
+       
         <Drawer open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>
         <div
             tabIndex={0}
