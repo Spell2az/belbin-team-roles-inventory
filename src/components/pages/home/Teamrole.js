@@ -3,7 +3,7 @@ import { withStyles} from '@material-ui/core/styles';
 
 
 const styles = props => ({
-  card: {
+  teamrole: {
     margin: '20px 0',
     borderBottom: '2px solid #d7d7d7',
     paddingBottom: '1.33em',
@@ -17,9 +17,9 @@ const styles = props => ({
 })
 const Teamrole = props => {
   const {
-    name, description, character, likes, contributions, pitfalls, classes
+    name, description, character, likes, contributions, pitfalls, classes, id
   } = props
-  return (<div className={classes.card}>
+  return (<div  id={id} className={classes.teamrole}>
     <h4>{name}</h4>
    
       <h5>Description</h5>
