@@ -2,8 +2,8 @@ import React from 'react';
 import LandingHero from './LadingHero';
 import Teamrole from './Teamrole';
 import {teamroles} from './teamroles';
-import classnames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import { createId } from '../../../utils/createId';
 
 const styles = props => ({
   teamroles: {
@@ -42,7 +42,8 @@ In practice, we all have two or three team roles that fit us naturally and some 
        <section className="text-wrapper">
          <h3 >The Nine Team Roles and Their Talents</h3>
          <br/>
-         <div className={classes.teamroles}> {teamroles.map(role =><Teamrole key={role.name} {...role}></Teamrole>)}</div>
+         <div className={classes.teamroles}>{teamroles.map(role =><Teamrole  id={createId(role.name)} key={role.name} {...role}></Teamrole>)} </div>
+         
          
        </section>
       </main>
