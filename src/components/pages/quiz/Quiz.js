@@ -8,14 +8,15 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import cx from 'classnames';
+import HelpIcon from '@material-ui/icons/HelpOutline';
 import PointControl from './PointControls';
 import { questions } from './questions';
 import { Done } from '@material-ui/icons';
-export const ResultContext = React.createContext({
-  results: null,
-});
-
+import Dialog from '@material-ui/core/Dialog';
+import InstructionsContent from '../instructions/InstructionsContent';
+import Slide from '@material-ui/core/Slide';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
 const styles = theme => ({
   paper: {
     padding: '60px',
@@ -37,6 +38,10 @@ const styles = theme => ({
     margin: '0 auto',
     width: '80%',
   },
+  button: {
+    marginTop: '10px',
+    marginRight: '10px',
+  },
   heading: {
     textAlign: 'center',
     letterSpacing: '2px',
@@ -53,8 +58,21 @@ const styles = theme => ({
     color: '#00e676',
     display: 'inline-block',
     marginBottom: '-3px',
+  },
+  instructionsButton: {
+    position: 'fixed',
+    bottom: '80px',
+    right: '80px',
+  },
+  helpIcon: {
+    fontSize: '40px',
+    color: '#fff',
   }
 });
+
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 
 function getSteps() {
   return Object.keys(questions).map(key => questions[key].statement);
@@ -66,6 +84,7 @@ function getStepContent(statementNo) {
 
 class Quiz extends Component {
   state = {
+    open: true,
     activeStep: 0,
     answers: {
       1: {
@@ -181,6 +200,14 @@ class Quiz extends Component {
     }));
   };
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   addHandler = ({ answerNo, key }) => event => {
     const currPoints = this.state.answers[answerNo].pointsLeft;
 
@@ -230,21 +257,7 @@ class Quiz extends Component {
     return (
       <div className={classes.wrapper}>
         <Paper className={classes.paper}>
-          <div className={cx(classes.stepperWrapper, classes.instructionsWrapper)}>
-            <h3 className={classes.heading}>Instructions</h3>
-            <hr />
-            <div className={classes.instructionsText}>
-              To respond to this inventory, you will need to think back to occasions when you have
-              been involved in any form of team activity and to make generalisations on the basis of
-              those experiences. For each section, you are asked to distribute a total of ten points
-              among the sentences which you think more accurately describe your behaviour. These
-              points may be distributed among several sentences, in extreme cases they might be
-              distributed among all the sentences or 10 marks might be given to a single sentence.
-              However try to avoid either extreme.
-            </div>
-            <hr />
-          </div>
-
+        
           <div className={classes.stepperWrapper}>
             <Stepper activeStep={activeStep} orientation="vertical">
               {steps.map((label, index) => (
@@ -252,7 +265,7 @@ class Quiz extends Component {
                   <StepLabel>{label}</StepLabel>
 
                   <StepContent>
-                    <div ><p style={{lineHeight: '34px'}}>Points left: {answers[index + 1].pointsLeft} <span>{answers[index + 1].pointsLeft === 0 && (<Done className={classes.check}></Done>)}</span></p></div>
+                    <div><p style={{lineHeight: '34px'}}>Points left: {answers[index + 1].pointsLeft} <span>{answers[index + 1].pointsLeft === 0 && (<Done className={classes.check}></Done>)}</span></p></div>
                     {Object.keys(getStepContent(index)).map(key => (
                       <div className={classes.sentenceWrapper} key={key}>
                         <PointControl
@@ -286,23 +299,32 @@ class Quiz extends Component {
                         >
                           {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>
-                        <ResultContext.Provider value={this.state.answers} />
                       </div>
                     </div>
                   </StepContent>
                 </Step>
               ))}
             </Stepper>
-            {/* {activeStep === steps.length && (
-              <Paper square elevation={0} className={classes.resetContainer}>
-                <Typography>All steps completed - you&quot;re finished</Typography>
-                <Button onClick={this.handleReset} className={classes.button}>
-                  Reset
-                </Button>
-              </Paper>
-            )} */}
           </div>
+          <Dialog open={this.state.open}
+           TransitionComponent={Transition}
+           keepMounted
+           onClose={this.handleClose}
+           scroll="body"
+           maxWidth="lg">
+          <DialogContent>
+          <InstructionsContent />
+          </DialogContent>
+           <DialogActions>
+           <Button onClick={this.handleClose} color="primary">
+              CLOSE
+            </Button>
+           </DialogActions>
+          </Dialog>
         </Paper>
+        <Button onClick={this.handleClickOpen} color="primary" size="medium" variant="fab" aria-label="Instructions" className={classes.instructionsButton}>
+            <HelpIcon className={classes.helpIcon} />        
+          </Button>
       </div>
     );
   }
