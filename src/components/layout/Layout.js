@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import { Route } from 'react-router-dom';
 import Home from '../pages/home/Home';
@@ -15,6 +14,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { roleNames } from '../pages/home/teamroles';
 import { createId } from '../../utils/createId';
 import { HashLink } from 'react-router-hash-link';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = {
   list: {
@@ -28,9 +31,16 @@ const styles = {
     fontWeight: 400,
   },
   appBar: {
-    background: 'white',
+    background: 'linear-gradient(to right, #372a7d 0%, #6200e9 100%)',//'#6200e9',
     
-  }
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
 };
 
 class Layout extends Component {
@@ -71,7 +81,18 @@ class Layout extends Component {
     return (
       <div>
         <AppBar className={classes.appBar} position="fixed">
-        <Toolbar><Button onClick={this.toggleDrawer(true)} variant="outlined" size= "medium" > MENU </Button></Toolbar ></AppBar>
+          <Toolbar>
+            <IconButton  onClick={this.toggleDrawer(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="title" color="inherit" className={classes.grow}>
+            Menu
+          </Typography>
+         <IconButton color="inherit">
+           <AccountCircle />
+         </IconButton>
+          </Toolbar >
+        </AppBar>
        
         <Drawer open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>
         <div
