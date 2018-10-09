@@ -23,7 +23,7 @@ const Teamrole = props => {
     <h4>{name}</h4>
    
       <h5>Description</h5>
-      <p>{name} {description}</p>
+      <p>{description}</p>
       <h5>Character</h5>
     <p>{character}</p>
       <h5>Likes</h5>
