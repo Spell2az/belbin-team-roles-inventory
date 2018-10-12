@@ -18,7 +18,13 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import SignIn from '../authModal/baseModal';
 const styles = {
   list: {
     width: 250,
@@ -46,6 +52,9 @@ const styles = {
 class Layout extends Component {
   state = {
     drawerOpen: false,
+    menuOpen: false,
+    signin: false,
+    signup: false,
   };
 
   toggleDrawer = open => () => {
@@ -54,10 +63,21 @@ class Layout extends Component {
     });
   };
 
+  handleToggle = () => {
+    this.setState(state => ({ menuOpen: !state.menuOpen }));
+  };
+
+  handleClose = event => {
+    if (this.anchorEl.contains(event.target)) {
+      return;
+    }
+    this.setState({ menuOpen: false });
+  };
+  handleSignInToggle = () => this.setState(prevState => ({signin: !prevState.signin}))
 
   render() {
     const { classes } = this.props;
-
+    const { menuOpen, signin } = this.state;
     const roleList = (
       <div className={classes.list}>
       <List component="nav">
@@ -88,12 +108,35 @@ class Layout extends Component {
           <Typography variant="title" color="inherit" className={classes.grow}>
             Menu
           </Typography>
-         <IconButton color="inherit">
+         <IconButton buttonRef={node => {
+              this.anchorEl = node;
+            }}
+            aria-owns={menuOpen ? 'menu-list-grow' : null}
+            aria-haspopup="true"
+            onClick={this.handleToggle} color="inherit">
            <AccountCircle />
          </IconButton>
+         <Popper open={menuOpen} anchorEl={this.anchorEl} transition >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id="menu-list-grow"
+                style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+              >
+                <Paper>
+                  <ClickAwayListener onClickAway={this.handleClose}>
+                    <MenuList>
+                      <MenuItem onClick={this.handleSignInToggle}>SignIn</MenuItem>
+                      <MenuItem onClick={this.handleClose}>Signup</MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
           </Toolbar >
         </AppBar>
-       
+      
         <Drawer open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>
         <div
             tabIndex={0}
@@ -108,6 +151,7 @@ class Layout extends Component {
           <Route path="/quiz" component={Quiz} />
           <Route path="/results" component={Results} />
           <Route path="/instructions" component={Instructions} />
+          <SignIn close={this.handleSignInToggle} open={signin}/>
       </div>
     )
   }
