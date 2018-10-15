@@ -19,6 +19,16 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
+
+const scrollWithOffset = (el, offset) => {
+  const elementPosition = el.offsetTop - offset;
+  window.scroll({
+    top: elementPosition,
+    left: 0,
+    behavior: "smooth"
+  });    
+}
+
 const styles = {
   list: {
     width: 250,
@@ -69,7 +79,7 @@ class Layout extends Component {
       <hr/>
         <List component="nav">
           <ListItem ><ListItemText><h3 className={classes.drawerHeading}>ROLES</h3></ListItemText></ListItem>
-          {roleNames.map(name => ( <ListItem key={name} button component={HashLink} scroll={el => el.scrollIntoView({ behavior: 'auto', block: 'center' })} to={`/#${createId(name)}`} >
+          {roleNames.map(name => ( <ListItem key={name} button component={HashLink} scroll={el => scrollWithOffset(el, 100)} to={`/#${createId(name)}`} >
             <ListItemText>{name}</ListItemText>
           </ListItem>))}
          
