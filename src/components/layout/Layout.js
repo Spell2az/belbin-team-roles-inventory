@@ -24,7 +24,8 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import SignIn from '../authModal/baseModal';
+import SignIn from '../authModals/SignIn';
+import SignUp from '../authModals/SignUp';
 const styles = {
   list: {
     width: 250,
@@ -53,8 +54,8 @@ class Layout extends Component {
   state = {
     drawerOpen: false,
     menuOpen: false,
-    signin: false,
-    signup: false,
+    signInOpen: false,
+    signUpOpen: false,
   };
 
   toggleDrawer = open => () => {
@@ -73,11 +74,12 @@ class Layout extends Component {
     }
     this.setState({ menuOpen: false });
   };
-  handleSignInToggle = () => this.setState(prevState => ({signin: !prevState.signin}))
+  handleSignInToggle = () => this.setState(prevState => ({signInOpen: !prevState.signInOpen}))
+  handleSignUpToggle = () => this.setState(prevState => ({signUpOpen: !prevState.signUpOpen}))
 
   render() {
     const { classes } = this.props;
-    const { menuOpen, signin } = this.state;
+    const { menuOpen, signInOpen, signUpOpen } = this.state;
     const roleList = (
       <div className={classes.list}>
       <List component="nav">
@@ -126,8 +128,8 @@ class Layout extends Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <MenuList>
-                      <MenuItem onClick={this.handleSignInToggle}>SignIn</MenuItem>
-                      <MenuItem onClick={this.handleClose}>Signup</MenuItem>
+                      <MenuItem onClick={this.handleSignInToggle}>Sign In</MenuItem>
+                      <MenuItem onClick={this.handleSignUpToggle}>Sign Up</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -151,7 +153,8 @@ class Layout extends Component {
           <Route path="/quiz" component={Quiz} />
           <Route path="/results" component={Results} />
           <Route path="/instructions" component={Instructions} />
-          <SignIn close={this.handleSignInToggle} open={signin}/>
+          {signInOpen && <SignIn close={this.handleSignInToggle} open={signInOpen}/>}
+          {signUpOpen && <SignUp close={this.handleSignUpToggle} open={signUpOpen}/>}
       </div>
     )
   }
