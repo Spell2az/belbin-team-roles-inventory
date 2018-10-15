@@ -15,6 +15,7 @@ import { roleNames } from '../pages/home/teamroles';
 import { createId } from '../../utils/createId';
 import { HashLink } from 'react-router-hash-link';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -36,6 +37,7 @@ const styles = {
   },
   grow: {
     flexGrow: 1,
+    marginLeft: '15px',
   },
   menuButton: {
     marginLeft: -12,
@@ -82,12 +84,12 @@ class Layout extends Component {
       <div>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>
-            <IconButton  onClick={this.toggleDrawer(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
+            <Button  onClick={this.toggleDrawer(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.grow}>
+            <Typography variant="title" color="inherit" className={classes.grow}>
             Menu
           </Typography>
+          </Button>
          
          {/* <IconButton color="inherit">
            <AccountCircle />
