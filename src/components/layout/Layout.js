@@ -88,9 +88,10 @@ class Layout extends Component {
           <Typography variant="title" color="inherit" className={classes.grow}>
             Menu
           </Typography>
-         <IconButton color="inherit">
+         
+         {/* <IconButton color="inherit">
            <AccountCircle />
-         </IconButton>
+         </IconButton> */}
           </Toolbar >
         </AppBar>
        
